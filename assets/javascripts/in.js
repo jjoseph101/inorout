@@ -176,7 +176,6 @@ $(document).ready(function(){
 				for (var j=0; j<recipeIngreds.length; j++) {
 					recipeDiv.append(recipeIngreds[j]);
 					recipeDiv.append("<BR>");
-					console.log("Test: " + recipeIngreds[j]);
 				};
 				recipeDiv.append("<BR>");
 				recipeDiv.append(r);
