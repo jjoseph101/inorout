@@ -111,9 +111,7 @@ $(document).ready(function(){
 		};
 
 		// set up API url
-		//var queryURLOld = URL + "q=" + meats + "," + cuisines + "&from=0&to=100" + "&diet=" + diets + "&health=" + allergies + "&calories=gte%20" + calMin + ",%20lte%20" + calMax;
 		var queryURL = URL + "q=" + meatZ + cuisineZ + "&from=0&to=100" + dietZ + allergieZ + calMinZ + calMaxZ;
-		//console.log("queryURLOLD: " + queryURLOld); 
 		console.log("queryURL: " + queryURL); 
 	
 		// ajax api call
@@ -164,7 +162,6 @@ $(document).ready(function(){
 				p.attr("class", "panel-heading");
 				r.attr("style", "float: left;");
 				recipeDiv.attr("class", "panel panel-primary");
-				// recipeDiv.attr("style", "min-height: 300px;");
 				recipeDiv.append(p);
 				recipeDiv.append("<BR>");
 				recipeDiv.append(recipeImg);
@@ -189,9 +186,5 @@ $(document).ready(function(){
 
 		// prevent refresh
 		return false;
-
 	});
 });
-
-
-
