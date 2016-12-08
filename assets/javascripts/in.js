@@ -59,7 +59,7 @@ $(document).ready(function(){
 		$("#searchCrit").append("Calories (min): " + calMin + "<BR>");
 		$("#searchCrit").append("Calories (max): " + calMax + "<BR>");
 
-		//check to make sure user inputs minimal search criteria
+		// check to make sure user inputs minimal search criteria
 		if (meats=="" && cuisines=="") {
 			$(".results").html("You must input either a meat selection or a cuisine selection" + "<BR>" + "Please try again");
 			return false;
