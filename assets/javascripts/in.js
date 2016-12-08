@@ -4,7 +4,7 @@
 // 1. Unable to find max ingredients API call...do we want to count ingredients of all returned results ourselves and just display those matching user's request?
 // 2. Should we create checkboxes for some search criteria?
 // 3. Should we create 'Instructions' button like on Edamam site? [CREATED LINK]
-// 4. Display any other criteria besides recipe name; image; ingredients; instructions source; and instructions link?
+// 4. Display any other criteria besides recipe name; image; calories; ingredients; instructions source; and instructions link?
 // 5. Issue re not needing API key?  (e.g., appKey and appID)
 // 6. Results look cluttered.  Should we display all info on results page?
 // 7. Line break after each ingredient? [DONE]
