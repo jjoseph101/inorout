@@ -159,7 +159,7 @@ $(document).ready(function(){
 //
 				var voteCount;
 				var voteRetrieve;
-				var resultName;
+				var resultName = results[i].recipe.label;
 				var recipeName = results[i].recipe.label;
 				var b = $("<button>").text("Recommend");
 				b.val(recipeName);
