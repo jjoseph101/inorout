@@ -12,21 +12,6 @@
 // 9. Add diet labels? [[ON NEXT PAGE]]
 // 10. Add health labels?[[ON NEXT PAGE]]
 
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAI6FT3WrhdqXUjwkaW-d2osyPasRYlScQ",
-    authDomain: "in-or-out-8b800.firebaseapp.com",
-    databaseURL: "https://in-or-out-8b800.firebaseio.com",
-    storageBucket: "in-or-out-8b800.appspot.com",
-    messagingSenderId: "141868409337"
-  };
-  
-  firebase.initializeApp(config);
-
-var database = firebase.database();
-//
-
-
 // begin console log
 console.log("Recipes 'In' Testing")
 
@@ -154,26 +139,10 @@ $(document).ready(function(){
 				var instructSource = results[i].recipe.source;
 				var instructionsLink = results[i].recipe.shareAs;
 				var calories = parseInt(results[i].recipe.calories);
-
-				
-//
-				var voteCount;
-				var voteRetrieve;
-				var resultName;
-				var recipeName = results[i].recipe.label;
-				var b = $("<button>").text("Recommend");
-				b.val(recipeName);
-				b.addClass("voteButton");
-
-				var retrieving = $("<p>");
-				retrieving.attr("id", "voteDisplay");
-//
-
 				var p = $("<p>").text("DISH #" + (i+1) + ": " + recipeTitle);
 				var q = $("<p>").text(recipeIngreds);
 				var r = $("<p>").text("SOURCE: " + instructSource);
 				var s = $("<a>").text("Click HERE for Cooking Instructions");
-				
 
 				// test local variables
 				console.log ("------------------------");
@@ -210,48 +179,8 @@ $(document).ready(function(){
 				recipeDiv.append("<BR>");
 				recipeDiv.append(s);
 				recipeDiv.append("<BR>");
-
-//
-				recipeDiv.append(b);
-				recipeDiv.append("<BR>");
-				recipeDiv.append(retrieving);
-//
-
 				$(".results").append(recipeDiv);
 				$(".results").append("<BR>");
-
-//
-					 $(".voteButton").on("click", function(){
-
-		  					resultName = $(this).val().trim();
-		  					
-		  					console.log(resultName);
-
-  							database.ref().once('value').then(function(snapshot) {
- 			
-  								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-  								voteCount++
-
-  								console.log(voteCount);
-		  	
-		 						 	database.ref(resultName).update({
-		  									votes : voteCount
-		  							});
-
- 							 });
- 					 });
-//
-//
-					database.ref().on("child_added", function(snapshot){
-
-					    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-					   
-					   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
-
-					  })
-//
-
-
 			};
 		});
 
