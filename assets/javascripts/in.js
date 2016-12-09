@@ -2,15 +2,15 @@
 
 // ISSUES:  
 // 1. Unable to find max ingredients API call...do we want to count ingredients of all returned results ourselves and just display those matching user's request?
-// 2. Should we create checkboxes for some search criteria?
-// 3. Should we create 'Instructions' button like on Edamam site? [CREATED LINK]
+// 2. Should we create checkboxes for some search criteria? [[YES]]
+// 3. Should we create 'Instructions' button like on Edamam site? [[YES]]
 // 4. Display any other criteria besides recipe name; image; calories; ingredients; instructions source; and instructions link?
 // 5. Issue re not needing API key?  (e.g., appKey and appID)
-// 6. Results look cluttered.  Should we display all info on results page?
+// 6. Results look cluttered.  Should we display all info on results page? [[JUST PIC & NAME]]  [[ADD'L INFO ON NEXT PAGE]]
 // 7. Line break after each ingredient? [DONE]
 // 8. Fix issue re user not inputing all search fields [DONE]
-// 9. Add diet labels?
-// 10. Add health labels?
+// 9. Add diet labels? [[ON NEXT PAGE]]
+// 10. Add health labels?[[ON NEXT PAGE]]
 
 // begin console log
 console.log("Recipes 'In' Testing")
