@@ -36,7 +36,7 @@ $(document).ready(function(){
 	// set global variables
 	var appKey="7b5ada340cf0a8e379450f9e20d0a560"
 	var appID="a81083ad"
-	var URL="https://api.edamam.com/search?"
+	var URL="http://cors-anywhere.herokuapp.com/https://api.edamam.com/search?"
 	var meats = "";
 	var cuisines = "";
 	var diets = "";
@@ -158,20 +158,34 @@ $(document).ready(function(){
 					var instructSource = results[i].recipe.source;
 					var ingredsLink = results[i].recipe.shareAs;
 					var instructionsLink = results[i].recipe.url;
-					var calories = parseInt(results[i].recipe.calories);		
+					var calories = parseInt(results[i].recipe.calories);
+					var recipeVotes = 0;		
 	//
 					var voteCount;
 					var voteRetrieve;
 					var resultName = results[i].recipe.label;
 					var recipeName = results[i].recipe.label;
-					var b = $("<button>").text("Recommend");
+					var b = $("<button>").text("Recommend This");
 					b.val(recipeName);
 					b.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
 					b.attr("type", "button");
 					b.addClass("voteButton");
+					b.attr("data", [i]);
 
-					var retrieving = $("<p>");
-					retrieving.attr("id", "voteDisplay");//
+										
+					database.ref().on('value', function(snapshot){
+		  				if(snapshot.child(recipeName).exists()){
+	  						// Pickup the number of votes for the recipe
+	  						recipeVotes = snapshot.child(recipeName).val().votes;
+		  				};			  					
+	  					console.log("inside" + recipeVotes)
+						
+	  				
+	  				});
+
+
+					var retrieving = $("<p>").html("Recommended By: "+recipeVotes);
+					retrieving.attr("id", [i]);//
 
 					var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
 					var q = $("<p>").text(recipeIngreds);
@@ -231,6 +245,7 @@ $(document).ready(function(){
 					recipeDiv.append(b);
 					recipeDiv.append("<BR>");
 					recipeDiv.append(retrieving);
+
 	//
 
 					$(".results").append(recipeDiv);
@@ -238,33 +253,71 @@ $(document).ready(function(){
 
 	//
 						 $(".voteButton").on("click", function(){
+						 	var resultName = $(this).val().trim();
+						  	var pID = $(this).attr("data");
+						  	var voteCount;
+						  	
+						  	/*database.ref().once('value').then(function(snapshot) {
+				 			
+				  			voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+				  			
+				  			});*/
+						  					
+						  	console.log(resultName);
+							
+						
 
-			  					resultName = $(this).val().trim();
+				  			database.ref().once('value').then(function(snapshot) {
+				 			
+				 			
+				  			voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+				  			voteCount++
+
+				  				console.log(voteCount);
+						  	
+						 			database.ref(resultName).update({
+						  				votes : voteCount
+						  			});
+
+						  		var voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+									   	console.log(resultName);
+									   	console.log(snapshot.child(resultName).exists());
+									   	console.log(snapshot.child(resultName).val())
+								$("#" + pID).html("Recommended by: " + voteRetrieve);
+								//recipeDiv.append("Recommendations: "+ voteRetrieve);
+
+				 	 		});
+
+						 });
+
+					
+
+	// 		  					resultName = $(this).val().trim();
 			  					
-			  					console.log(resultName);
+	// 		  					console.log(resultName);
 
-	  							database.ref().once('value').then(function(snapshot) {
+	//   							database.ref().once('value').then(function(snapshot) {
 	 			
-	  								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-	  								voteCount++
+	//   								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+	//   								voteCount++
 
-	  								console.log(voteCount);
+	//   								console.log(voteCount);
 			  	
-			 						 	database.ref(resultName).update({
-			  									votes : voteCount
-			  							});
+	// 		 						 	database.ref(resultName).update({
+	// 		  									votes : voteCount
+	// 		  							});
 
-	 							 });
-	 					 });
-	//
-	//
-						database.ref().on("child_added", function(snapshot){
+	//  							 });
+	//  					 });
+	// //
+	// //
+	// 					database.ref().on("child_added", function(snapshot){
 
-						    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+	// 					    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
 						   
-						   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
+	// 					   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
 
-						  })
+	// 					  })
 //
 
 				};
