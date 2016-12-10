@@ -37,7 +37,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xl-5"></div>
+			<a href="index.html">
 			<img src="assets/images/logoFour.svg" class="logo">
+			</a>
 		</div>
 	<div class="col-xl-5"></div>
 	</div>
@@ -197,14 +199,15 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4"></div>
+		
 
-		<div class="jumbotron">
-			<h2 class="front">Welcome!</h2>
+		<div class="jumbotron" id="jumbo">
+			<h2>Welcome!</h2>
 			<br>	
-			<p class="front">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, reiciendis sint delectus voluptate eligendi consectetur perspiciatis nam expedita deserunt sequi obcaecati qui veniam in labore, et ad ullam assumenda similique.</p>
-			</div>
-	<div class="col-md-4"></div>
+			<p class="front">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, reiciendis sint delectus voluptate eligendi consectetur perspiciatis nam expedita deserunt sequi obcaecati qui veniam in labore, et ad ullam assumenda similique.</p> 
+		</div>
+
+		
 
 		</div>
 	</div>
@@ -217,7 +220,16 @@
 	
 	&copy; IN-OR-OUT 2016	
 
-</footer>  
+</footer> 
+
+
+<script type="text/javascript">
+	
+$("#jumbo").on("click", function(){
+	$("#jumbo").hide();
+});
+
+</script> 
 
 </body>
 
