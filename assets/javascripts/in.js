@@ -186,6 +186,7 @@ $(document).ready(function(){
 
 					var retrieving = $("<p>").html("Recommended By: "+recipeVotes);
 					retrieving.attr("id", [i]);//
+					retrieving.addClass("voteShow");
 
 					var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
 					var q = $("<p>").text(recipeIngreds);
