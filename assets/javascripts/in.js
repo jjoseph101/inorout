@@ -55,6 +55,7 @@ $(document).ready(function(){
 		allergies = $("#allergy").val().trim();
 		calMin = $("#calMin").val().trim();
 		calMax = $("#calMax").val().trim();
+		maxIngreds = $("#ingreds").val().trim();
 
 		// test
 		console.log("Meat: " + meats);
@@ -63,6 +64,7 @@ $(document).ready(function(){
 		console.log("Allergy: " + allergies);
 		console.log("Calories (min): " + calMin);
 		console.log("Calories (max): " + calMax);
+		console.log("Maximum Ingredients: " + maxIngreds);
 
 		// display search criteria on HTML page
 		$("#searchCrit").empty();
@@ -73,6 +75,7 @@ $(document).ready(function(){
 		$("#searchCrit").append("Allergy: " + allergies + "<BR>");
 		$("#searchCrit").append("Calories (min): " + calMin + "<BR>");
 		$("#searchCrit").append("Calories (max): " + calMax + "<BR>");
+		$("#searchCrit").append("Maximum Ingredients: " + maxIngreds + "<BR>");
 
 		// check to make sure user inputs minimal search criteria
 		if (meats=="" && cuisines=="") {
@@ -126,18 +129,16 @@ $(document).ready(function(){
 		};
 
 		// set up API url
-		var queryURL = URL + "q=" + meatZ + cuisineZ + "&from=0&to=100" + dietZ + allergieZ + calMinZ + calMaxZ;
+		var queryURL = URL + "q=" + meatZ + cuisineZ + "&from=0&to=300" + dietZ + allergieZ + calMinZ + calMaxZ;
 		console.log("queryURL: " + queryURL); 
 	
 		// ajax api call
 		$.ajax({url: queryURL, method: "GET"}).done(function(response){
 			var results =  response.hits;
+			var maxCount = 0
 			console.log("RESULTS:");
 			console.log(results);
 			console.log(results.length);
-
-			// display total number of recipes returned
-			$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
 
 			// clear results div
 			$(".results").empty();
@@ -145,114 +146,133 @@ $(document).ready(function(){
 			// display results loop
 			for (var i=0; i<results.length; i++) {
 
-				// set local variables
-				var recipeDiv = $("<div>");
-				var recipeTitle = results[i].recipe.label;
-				var recipeImg = $("<img>");
-				var recipeImageURL = results[i].recipe.image;
-				var recipeIngreds = results[i].recipe.ingredientLines;
-				var instructSource = results[i].recipe.source;
-				var instructionsLink = results[i].recipe.shareAs;
-				var calories = parseInt(results[i].recipe.calories);
+				if ((maxIngreds=="" || maxIngreds>results[i].recipe.ingredientLines.length) && maxCount<100) {
 
-				
-//
-				var voteCount;
-				var voteRetrieve;
-				var resultName = results[i].recipe.label;
-				var recipeName = results[i].recipe.label;
-				var b = $("<button>").text("Recommend");
-				b.val(recipeName);
-				b.addClass("voteButton");
+					maxCount++
+					// set local variables
+					var recipeDiv = $("<div>");
+					var recipeTitle = results[i].recipe.label;
+					var recipeImg = $("<img>");
+					var recipeImageURL = results[i].recipe.image;
+					var recipeIngreds = results[i].recipe.ingredientLines;
+					var instructSource = results[i].recipe.source;
+					var ingredsLink = results[i].recipe.shareAs;
+					var instructionsLink = results[i].recipe.url;
+					var calories = parseInt(results[i].recipe.calories);		
+	//
+					var voteCount;
+					var voteRetrieve;
+					var resultName = results[i].recipe.label;
+					var recipeName = results[i].recipe.label;
+					var b = $("<button>").text("Recommend");
+					b.val(recipeName);
+					b.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
+					b.attr("type", "button");
+					b.addClass("voteButton");
 
-				var retrieving = $("<p>");
-				retrieving.attr("id", "voteDisplay");
-//
+					var retrieving = $("<p>");
+					retrieving.attr("id", "voteDisplay");//
 
-				var p = $("<p>").text("DISH #" + (i+1) + ": " + recipeTitle);
-				var q = $("<p>").text(recipeIngreds);
-				var r = $("<p>").text("SOURCE: " + instructSource);
-				var s = $("<a>").text("Click HERE for Cooking Instructions");
-				
+					var p = $("<p>").text("DISH #" + (i+1) + ": " + recipeTitle);
+					var q = $("<p>").text(recipeIngreds);
+					var r = $("<p>").text(" SOURCE: " + instructSource);
+					var s = $("<button>").text("Instructions");			
 
-				// test local variables
-				console.log ("------------------------");
-				console.log("Item " + (i+1));
-				console.log(recipeTitle);
-				console.log(recipeImageURL);
-				console.log(recipeIngreds);
-				console.log(instructSource);
-				console.log(instructionsLink);
+					// test local variables
+					// console.log ("------------------------");
+					// console.log("Item " + (i+1));
+					// console.log(recipeTitle);
+					// console.log(recipeImageURL);
+					// console.log(recipeIngreds);
+					// console.log(instructSource);
+					// console.log(instructionsLink);
 
-				//begin populating HTML page with results
-				recipeImg.attr("src", recipeImageURL);
-				recipeImg.attr("style", "float:left; margin:10px; position:relative;");
-				recipeImg.attr("class", "pics");
-				s.attr("href", instructionsLink);
-				p.attr("style", "font-weight: bold; clear:both;");
-				p.attr("class", "panel-heading");
-				r.attr("style", "float: left;");
-				recipeDiv.attr("class", "panel panel-primary");
-				recipeDiv.append(p);
-				recipeDiv.append("<BR>");
-				recipeDiv.append(recipeImg);
-				recipeDiv.append("CALORIES: " + calories)
-				recipeDiv.append("<BR>");
-				recipeDiv.append("<BR>");
-				recipeDiv.append("INGREDIENTS:")
-				recipeDiv.append("<BR>");
-				for (var j=0; j<recipeIngreds.length; j++) {
-					recipeDiv.append(recipeIngreds[j]);
+					//begin populating HTML page with results
+					recipeImg.attr("src", recipeImageURL);
+					recipeImg.attr("style", "margin:10px; position:relative;");
+					recipeImg.attr("class", "pics");
+					s.attr("onclick", "location.href="+"'"+instructionsLink+"';")
+					s.attr("type", "button");
+					s.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
+					p.attr("style", "font-weight: bold; width: 330px; float: left; display: block; margin: 0 auto 0 auto; margin-left:-5px;");
+					p.attr("class", "panel-heading");
+					r.attr("style", "float: left; display: block; margin: 0 auto 0 auto;");
+					var rICount = recipeIngreds.length+1;
+
+					recipeDiv.attr("class", "panel panel-primary");
+					recipeDiv.attr("style", "width: 330px; float: left; margin-right:30px; padding-left:5px; padding-bottom:5px;");
+					recipeDiv.append(p);
 					recipeDiv.append("<BR>");
+					recipeDiv.append(recipeImg);
+					recipeDiv.append("<BR>");
+					recipeDiv.append(" CALORIES: " + calories);
+					recipeDiv.append("<BR>");
+					recipeDiv.append("<BR>");
+					recipeDiv.append(" INGREDIENTS: " + rICount);
+					recipeDiv.append("<BR>");
+					recipeDiv.append("<BR>");
+
+					//ingredient function
+						// recipeDiv.append("INGREDIENTS:")
+						// recipeDiv.append("<BR>");
+						// for (var j=0; j<recipeIngreds.length; j++) {
+						// 	recipeDiv.append(recipeIngreds[j]);
+						// 	recipeDiv.append("<BR>");
+						// };
+						// recipeDiv.append("<BR>");
+
+					recipeDiv.append(r);
+					recipeDiv.append("<BR>");
+					recipeDiv.append("<BR>");
+					recipeDiv.append(s);
+					recipeDiv.append("<BR>");
+
+	//
+					recipeDiv.append(b);
+					recipeDiv.append("<BR>");
+					recipeDiv.append(retrieving);
+	//
+
+					$(".results").append(recipeDiv);
+					$(".results").append("<BR>");
+
+	//
+						 $(".voteButton").on("click", function(){
+
+			  					resultName = $(this).val().trim();
+			  					
+			  					console.log(resultName);
+
+	  							database.ref().once('value').then(function(snapshot) {
+	 			
+	  								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+	  								voteCount++
+
+	  								console.log(voteCount);
+			  	
+			 						 	database.ref(resultName).update({
+			  									votes : voteCount
+			  							});
+
+	 							 });
+	 					 });
+	//
+	//
+						database.ref().on("child_added", function(snapshot){
+
+						    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+						   
+						   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
+
+						  })
+//
+
 				};
-				recipeDiv.append("<BR>");
-				recipeDiv.append(r);
-				recipeDiv.append("<BR>");
-				recipeDiv.append(s);
-				recipeDiv.append("<BR>");
-
-//
-				recipeDiv.append(b);
-				recipeDiv.append("<BR>");
-				recipeDiv.append(retrieving);
-//
-
-				$(".results").append(recipeDiv);
-				$(".results").append("<BR>");
-
-//
-					 $(".voteButton").on("click", function(){
-
-		  					resultName = $(this).val().trim();
-		  					
-		  					console.log(resultName);
-
-  							database.ref().once('value').then(function(snapshot) {
- 			
-  								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-  								voteCount++
-
-  								console.log(voteCount);
-		  	
-		 						 	database.ref(resultName).update({
-		  									votes : voteCount
-		  							});
-
- 							 });
- 					 });
-//
-//
-					database.ref().on("child_added", function(snapshot){
-
-					    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-					   
-					   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
-
-					  })
-//
-
-
 			};
+
+			// display total number of recipes returned
+			$("#searchCrit").prepend("RESULTS RETURNED: " + maxCount + "<BR>" + "<BR>");
+
 		});
 
 		// prevent refresh
