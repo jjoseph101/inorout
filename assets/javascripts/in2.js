@@ -113,27 +113,6 @@ function getURL(){
 
 };
 
-/*function databseRetrieve(recipeName, recipeVotes){
-
-	database.ref().on('value', function(snapshot) {
-		console.log(snapshot);
-
-		console.log("Recipe Name: " + recipeName);
-
-		  				
-		 if(snapshot.child(recipeName).exists()){
-	  			// Pickup the number of votes for the recipe
-	  			recipeVotes = snapshot.child(recipeName).val().votes;
-		  			console.log("Recipe Exists")
-		  		};			  					
-	  			
-	  			console.log("inside" + recipeVotes)
-						
-	  				
-	 });
-
-
-}*/
 
 function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitle, recipeIngreds, instructSource, instructionsLink, calories, rICount, i){
 
@@ -244,7 +223,7 @@ function ajaxCall(queryURL){
 
 		if ((maxIngreds=="" || maxIngreds>results[i].recipe.ingredientLines.length) && maxCount<100) {
 
-			(function() {
+			//(function() {
 					maxCount++
 					var recipeTitle = results[i].recipe.label;
 					var recipeImageURL = results[i].recipe.image;
@@ -263,7 +242,7 @@ function ajaxCall(queryURL){
 
 				DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitle, recipeIngreds, instructSource, instructionsLink, calories, rICount, i);
 			
-			})();//function
+			//})();//function
 
 		} //maxIng 
 			
