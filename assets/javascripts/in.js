@@ -187,11 +187,11 @@ $(document).ready(function(){
 						console.log("Recipe Name: " + recipeName);
 
 		  				
-		  				if(snapshot.child(recipeName).exists()){
-	  						// Pickup the number of votes for the recipe
-	  						recipeVotes = snapshot.child(recipeName).val().votes;
-		  				console.log("Recipe Exists")
-		  			};			  					
+			  				if(snapshot.child(recipeName).exists()){
+		  						// Pickup the number of votes for the recipe
+		  						recipeVotes = snapshot.child(recipeName).val().votes;
+			  				console.log("Recipe Exists")
+			  				};			  					
 	  					console.log("inside" + recipeVotes)
 						
 	  				
@@ -324,7 +324,7 @@ $(document).ready(function(){
 				 	 		return false;
 
 						 });
-});//reday
+});//ready
 
 
 
