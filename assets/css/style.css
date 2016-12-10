@@ -85,6 +85,20 @@ h2 {
 }
 
 
+.panel-primary > .panel-heading {
+	background-color:black;
+	border-color:black;
+}
+
+.panel-body {
+	border-color:none;
+}
+
+label {
+	margin-bottom:5px;
+}
+
+
 
 footer {
 	background-color:black;
