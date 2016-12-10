@@ -173,7 +173,7 @@ $(document).ready(function(){
 					var retrieving = $("<p>");
 					retrieving.attr("id", "voteDisplay");//
 
-					var p = $("<p>").text("DISH #" + (i+1) + ": " + recipeTitle);
+					var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
 					var q = $("<p>").text(recipeIngreds);
 					var r = $("<p>").text(" SOURCE: " + instructSource);
 					var s = $("<button>").text("Instructions");			
