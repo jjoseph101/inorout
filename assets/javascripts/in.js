@@ -33,6 +33,12 @@ console.log("Recipes 'In' Testing")
 // begin javascript code
 $(document).ready(function(){
 
+		database.ref().on('value', function(snapshot) {
+			console.log(snapshot.val());
+
+		});
+
+
 	// set global variables
 	var appKey="7b5ada340cf0a8e379450f9e20d0a560"
 	var appID="a81083ad"
@@ -148,6 +154,7 @@ $(document).ready(function(){
 
 				if ((maxIngreds=="" || maxIngreds>results[i].recipe.ingredientLines.length) && maxCount<100) {
 
+					(function() {
 					maxCount++
 					// set local variables
 					var recipeDiv = $("<div>");
@@ -171,20 +178,27 @@ $(document).ready(function(){
 					b.attr("type", "button");
 					b.addClass("voteButton");
 					b.attr("data", [i]);
+					console.log("Recipe Name Before: " + recipeName);
 
 										
-					database.ref().on('value', function(snapshot){
-		  				if(snapshot.child(recipeName).exists()){
-	  						// Pickup the number of votes for the recipe
-	  						recipeVotes = snapshot.child(recipeName).val().votes;
-		  				};			  					
+					database.ref().on('value', function(snapshot) {
+						console.log(snapshot);
+
+						console.log("Recipe Name: " + recipeName);
+
+		  				
+			  				if(snapshot.child(recipeName).exists()){
+		  						// Pickup the number of votes for the recipe
+		  						recipeVotes = snapshot.child(recipeName).val().votes;
+			  				console.log("Recipe Exists")
+			  				};			  					
 	  					console.log("inside" + recipeVotes)
 						
 	  				
 	  				});
 
 
-					var retrieving = $("<p>").html("Recommended By: "+recipeVotes);
+					var retrieving = $("<p>").html("Recommended By: "+ recipeVotes);
 					retrieving.attr("id", [i]);//
 					retrieving.addClass("voteShow");
 
@@ -252,10 +266,27 @@ $(document).ready(function(){
 					$(".results").append(recipeDiv);
 					$(".results").append("<BR>");
 
-	//
-						 $(".voteButton").on("click", function(){
+						})();//function
+					
+				}; // if (max ing)
+
+				
+			}; //for loop result.lenght
+
+			// display total number of recipes returned
+			$("#searchCrit").prepend("RESULTS RETURNED: " + maxCount + "<BR>" + "<BR>");
+
+		}); //ajax
+
+		// prevent refresh
+		return false;
+	}); //submit
+
+  $(document).on("click",".voteButton", function(){
+		//event.preventDefault();
 						 	var resultName = $(this).val().trim();
 						  	var pID = $(this).attr("data");
+						  	
 						  	var voteCount;
 						  	
 						  	/*database.ref().once('value').then(function(snapshot) {
@@ -274,62 +305,26 @@ $(document).ready(function(){
 				  			voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
 				  			voteCount++
 
-				  				console.log(voteCount);
+				  						console.log(voteCount);
 						  	
 						 			database.ref(resultName).update({
 						  				votes : voteCount
 						  			});
 
-						  		var voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
+						  		
 									   	console.log(resultName);
 									   	console.log(snapshot.child(resultName).exists());
 									   	console.log(snapshot.child(resultName).val())
-								$("#" + pID).html("Recommended by: " + voteRetrieve);
+								
+								$("#" + pID).html("Recommended by: " + voteCount);
 								//recipeDiv.append("Recommendations: "+ voteRetrieve);
 
 				 	 		});
 
+				 	 		return false;
+
 						 });
+});//ready
 
-					
 
-	// 		  					resultName = $(this).val().trim();
-			  					
-	// 		  					console.log(resultName);
 
-	//   							database.ref().once('value').then(function(snapshot) {
-	 			
-	//   								voteCount = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-	//   								voteCount++
-
-	//   								console.log(voteCount);
-			  	
-	// 		 						 	database.ref(resultName).update({
-	// 		  									votes : voteCount
-	// 		  							});
-
-	//  							 });
-	//  					 });
-	// //
-	// //
-	// 					database.ref().on("child_added", function(snapshot){
-
-	// 					    voteRetrieve = (snapshot.child(resultName).exists() ? snapshot.child(resultName).val().votes : 0);
-						   
-	// 					   	$("#voteDisplay").html("Recommended by: " + voteRetrieve);
-
-	// 					  })
-//
-
-				};
-			};
-
-			// display total number of recipes returned
-			$("#searchCrit").prepend("RESULTS RETURNED: " + maxCount + "<BR>" + "<BR>");
-
-		});
-
-		// prevent refresh
-		return false;
-	});
-});

@@ -20,8 +20,6 @@
 	background-size:cover; 
 	font-family:"gill sans";
 	background-color:black;
-
-
 } 
 
 .logo {
@@ -171,6 +169,11 @@ p {
 label {
 	margin-bottom:6px;
 	
+}
+
+.results {
+
+
 }
 
 
