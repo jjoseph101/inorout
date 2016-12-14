@@ -73,6 +73,7 @@ $("#submit").on("click", function(){
 			nearZ=near;
 		}
 
+		console.log(near);
 
 		// set up API url
 		var queryURL = URL + "q=" + termZ + nearZ + "&from=0&to=20";
@@ -86,7 +87,7 @@ $("#submit").on("click", function(){
 			console.log("RESULTS:");
 			console.log(results);
 			console.log(results.length);
-
+			console.log(near);
 			// display total number of recipes returned
 			//$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
 
