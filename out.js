@@ -28,7 +28,7 @@ console.log("Out Testing");
 
 var terms = "";
 var near = "";
-var URL = "http://localhost:5001/yelp/search?term="+terms+"&location="+near;
+//var URL = "http://localhost:5001/yelp/search?term="+terms+"&location="+near;
 
 
 //event listener Submit
@@ -57,7 +57,7 @@ $("#submit").on("click", function(){
 			return false;
 		};
 
-//set cuisine search to null if not input by user
+//set meat search to null if not input by user
 		if (terms==="") {
 			termZ="";
 		} else {
@@ -76,7 +76,7 @@ $("#submit").on("click", function(){
 		console.log(near);
 
 		// set up API url
-		var queryURL = URL + "q=" + termZ + nearZ + "&from=0&to=20";
+		var queryURL = "http://localhost:5001/yelp/search?term="+termZ+"&location="+ nearZ+"&from=0&to=20";
 		console.log("queryURL: " + queryURL); 
 
 
