@@ -118,7 +118,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 
 	var recipeDiv = $("<div>");
 					recipeDiv.attr("class", "panel panel-primary");
-					recipeDiv.attr("style", "width: 330px; float: left; margin-right:30px; padding-left:5px; padding-bottom:5px;");
+					recipeDiv.attr("style", "width: 330px; float: left; margin-right:30px; padding-left:5px; padding-bottom:5px; border-color:black;");
 
 	var recipeImg = $("<img>");
 					recipeImg.attr("src", recipeImageURL);
@@ -171,7 +171,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					s.attr("type", "button");
 					s.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
 					
-
+					recipeDiv.attr("id", "marginFix"+maxCount);
 					recipeDiv.append(p);
 					recipeDiv.append("<BR>");
 					recipeDiv.append(recipeImg);
