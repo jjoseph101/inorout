@@ -160,7 +160,11 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 //
 
 	var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
+<<<<<<< HEAD
 					p.attr("style", "font-weight: bold; width: 329px; float: left; display: block; margin: 0 auto 0 auto; margin-left:-5px;");
+=======
+					p.attr("style", "font-weight: bold; width: 330px; float: left; display: block; margin: 0 auto 0 auto; margin-left:-5px;");
+>>>>>>> 0453fe44c67534005cf0ac1babc906c13e2fcc0e
 					p.attr("class", "panel-heading");
 	var q = $("<p>").text(recipeIngreds);
 	var r = $("<p>").text(" SOURCE: " + instructSource);
@@ -197,7 +201,11 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 	//
 
 					$(".results").append(recipeDiv);
+<<<<<<< HEAD
 					// $(".results").append("<BR>");				
+=======
+					$(".results").append("<BR>");				
+>>>>>>> 0453fe44c67534005cf0ac1babc906c13e2fcc0e
 
 
 
