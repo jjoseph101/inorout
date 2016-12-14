@@ -106,7 +106,7 @@ function getURL(){
 		};
 
 		// set up API url
-		var queryURL = URL + "q=" + meatZ + cuisineZ + "&from=0&to=300" + dietZ + allergieZ + calMinZ + calMaxZ;
+		var queryURL = URL + "q=" + meatZ + cuisineZ + "&from=0&to=100" + dietZ + allergieZ + calMinZ + calMaxZ;
 		console.log("queryURL: " + queryURL); 
 
 		ajaxCall(queryURL);

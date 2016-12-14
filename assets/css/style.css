@@ -100,11 +100,15 @@ p {
 	top:-130px;
 }
 
-.panel-primary>.panel-heading {
+.panel-primary >.panel-heading {
 	background-color:slategrey;
 	color:white;
-	border-color:none;
+	border-color:black;
 	
+}
+
+.panel-body {
+	border-color:black;
 }
 
 .btn-custom {
