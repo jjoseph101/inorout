@@ -57,7 +57,7 @@ $("#submit").on("click", function(){
 			return false;
 		};
 
-//set meat search to null if not input by user
+//set cuisine search to null if not input by user
 		if (terms==="") {
 			termZ="";
 		} else {
