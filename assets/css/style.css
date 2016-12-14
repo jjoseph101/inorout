@@ -89,7 +89,6 @@ p {
 
 .panel-body {
 	background-color:lightgrey;
-
 }
 
 .panel-custom {
@@ -104,7 +103,20 @@ p {
 	background-color:slategrey;
 	color:white;
 	border-color:black;
+	height:80px;
+	font-weight:400;
+
 	
+}
+
+.marginFix {
+	margin-left:17px;
+	margin-top:-120px;
+}
+
+.panel-primary {
+	border-color:none;
+	width:450px;
 }
 
 .panel-body {
