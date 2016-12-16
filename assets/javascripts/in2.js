@@ -210,7 +210,9 @@ function ajaxCall(queryURL){
 
 	//getURL();
 
-	$.ajax({url: queryURL, method: "GET"}).done(function(response){
+	$.ajax({url: queryURL, method: "GET"})
+
+	.done(function(response){
 
 		var results =  response.hits;
 		var maxCount = 0
@@ -255,7 +257,12 @@ function ajaxCall(queryURL){
 
 	$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
 
-	});//ajax call
+	});//.done call
+	.fail(function(){
+
+		$(".results").html("<h1>We are experiencing some technical issues right now. Please try again later.</h1>");
+
+	})//.fail
 }
 
 

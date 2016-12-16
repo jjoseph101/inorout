@@ -195,7 +195,12 @@ function ajaxCall(queryURL){
 			DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, address, restaurantName, yelpURL, restaurantID, restaurantVotes, i, city, state, zipcode);
 	
 		}
-	});//ajax call
+	});//.done call
+	.fail(function(){
+
+		$(".results").html("<h1>We are experiencing some technical issue right now. Please try again later.</h1>");
+
+	})//.fail
 }
 
 
