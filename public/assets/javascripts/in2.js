@@ -36,6 +36,7 @@ $(document).ready(function(){
 	var calMins = "";
 	var calMaxs = "";
 	var ingredss = "";
+	var resultsCount = 0;
 
 function displaySearch(){
 	// display search criteria on HTML page
@@ -195,6 +196,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					recipeDiv.append(b);
 					recipeDiv.append("<BR>");
 					recipeDiv.append(retrieving);
+					resultsCount++;
 
 	//
 
@@ -255,7 +257,7 @@ function ajaxCall(queryURL){
 			
 	}//for loop
 
-	$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
+	$("#searchCrit").prepend("RESULTS RETURNED: " + resultsCount + "<BR>" + "<BR>");
 
 	});//.done call
 	// .fail(function(){
@@ -281,6 +283,7 @@ $(document).on("click","#submit", function (event){
 		calMin = $("#calMin").val().trim();
 		calMax = $("#calMax").val().trim();
 		maxIngreds = $("#ingreds").val().trim();
+		resultsCount = 0;
 
 		displaySearch();
 		//ajaxCall();
