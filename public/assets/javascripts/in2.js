@@ -258,11 +258,11 @@ function ajaxCall(queryURL){
 	$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
 
 	});//.done call
-	.fail(function(){
+	// .fail(function(){
 
-		$(".results").html("<h1>We are experiencing some technical issues right now. Please try again later.</h1>");
+	// 	$(".results").html("<h1>We are experiencing some technical issues right now. Please try again later.</h1>");
 
-	})//.fail
+	// })//.fail
 }
 
 
