@@ -164,12 +164,10 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 //
 
 	var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
-					p.attr("style", "font-weight: 600; width: 330px; float: left; display: block; margin-left:-6px; margin-top:-1px;");
+					p.attr("style", "font-weight: 600; width: 330px;float: left; display: block; margin-left:-6px; margin-top:-1px;");
 					p.attr("class", "panel-heading");
 	var q = $("<p>").text(recipeIngreds);
-	var r = $("<p>").text(" SOURCE: "  + instructSource );
-					r.attr("style",   "text-align:center;");
-
+	
 	var s = $("<button>").text("Instructions").addClass("instructions");
 					s.attr("onclick", "location.href="+"'"+instructionsLink+"';")
 					s.attr("type", "button");
@@ -187,7 +185,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					recipeDiv.append("<BR>");
 					recipeDiv.append("<BR>");
 
-					recipeDiv.append(r);
+					recipeDiv.append(" SOURCE: " + instructSource);
 					recipeDiv.append("<BR>");
 					recipeDiv.append("<BR>");
 					recipeDiv.append(s);
