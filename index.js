@@ -1,6 +1,9 @@
 var express = require('express')
 var app = express()
 
+app.use(express.static(public));
+
+
 var Yelp = require('yelp');
 var yelp = new Yelp({
 	consumer_key: "QX6AnsA4NRlYlCLUVFziIw",
@@ -9,9 +12,9 @@ var yelp = new Yelp({
 	token_secret: "o1gvIqxMeJx0gXQrzNkkleOKEKE"
 });
 
-app.get('/', function (req, res) {
-	res.send('hello world');
-})
+// app.get('/', function (req, res) {
+// 	res.send('hello world');
+// })
 
 app.get('/yelp/search', function (req, res) {
 	yelp.search(req.query)
@@ -25,6 +28,6 @@ app.get('/yelp/search', function (req, res) {
 })
 
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 5000, function () {
 	console.log('example app listening on port ', app.get('port'))
 })

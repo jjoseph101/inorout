@@ -1,5 +1,5 @@
 {
-  "name": "node-edamam-api",
+  "name": "inOrOut",
   "version": "1.0.0",
   "description": "Express Server connecting to Edamam API",
   "main": "index.js",
