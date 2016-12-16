@@ -373,6 +373,35 @@ footer {
 /** MEDIA QUIERS **/
 
 
+#marginFix1 {
+	margin-top:0px;
+
+}
+
+#marginFix2 {
+	margin-top:-16px;
+}
+
+#marginFix3 {
+	margin-top:-32px;
+} 
+
+@media only screen and (max-width: 1199px) {
+
+	#marginFix3 {
+		margin-top:0px;
+	} 
+}
+
+@media only screen and (max-width: 992px) {
+
+	#marginFix2 {
+		margin-top:0px;
+	} 
+}
+
+
+
 
 /** MEDIA QUIERS FOR BUTTONS ONLY **/
  @media only screen and (max-width: 1400px) {
