@@ -87,6 +87,29 @@ p {
 
 /** MEDIA QUERIES FOR BUTTON GROUP **/
 
+@media only screen and (max-width: 1440px) {
+ 
+	.buttonGroupTwo {
+		position:relative;
+		right:20px;
+	}
+
+}
+
+
+@media only screen and (max-width: 1420px) {
+ 
+	.buttonGroupTwo {
+		position:relative;
+		right:30px;
+	}
+
+}
+
+
+
+
+
 @media only screen and (max-width: 1400px) {
  
 	.buttonGroupTwo {
