@@ -48,6 +48,7 @@ function displaySearch(){
 		$("#searchCrit").append("Calories (min): " + calMin + "<BR>");
 		$("#searchCrit").append("Calories (max): " + calMax + "<BR>");
 		$("#searchCrit").append("Maximum Ingredients: " + maxIngreds + "<BR>");
+		$("#searchCrit").css({"font-size":"36px"});
 
 
 };
@@ -57,6 +58,7 @@ function getURL(){
 	// check to make sure user inputs minimal search criteria
 		if (meats=="" && cuisines=="") {
 			$(".results").html("You must input either a meat selection or a cuisine selection" + "<BR>" + "Please try again");
+			$(".results").css({"background-color":"white","padding":"20px","width":"553px","color":"black","margin-left":"-15px"});
 			return false;
 		};
 
@@ -118,21 +120,23 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 
 	var recipeDiv = $("<div>");
 					recipeDiv.attr("class", "panel panel-primary");
-					recipeDiv.attr("style", "width: 330px; float: left; margin-right:30px; padding-left:5px; padding-bottom:5px; border-color:black;");
+					recipeDiv.attr("style", "width: 350px; float: left; margin-right:30px; padding-left:5px; padding-right:5px; padding-bottom:10px; border-color:transparent; text-align:center;");
 
 	var recipeImg = $("<img>");
 					recipeImg.attr("src", recipeImageURL);
-					recipeImg.attr("style", "margin:10px; position:relative;");
+					recipeImg.attr("style", " position:relative; margin:15px auto;");
 					recipeImg.attr("class", "pics");
 //FOR GRACE	
 
-	var b = $("<button>").text("Recommend This");
+	var b = $("<button>").text("Recommend").addClass("recommended");
 					b.val(recipeName);
-					b.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
+					b.attr("style", "display: block; margin: 0 auto 0 auto; color: white; padding:10px; border-color:black; background-color:black;");
 					b.attr("type", "button");
 					b.addClass("voteButton");
 					b.attr("data", [i]);
 					console.log("Recipe Name Before: " + recipeName);
+
+
 
 	//function databseRetrieve
 
@@ -160,16 +164,16 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 //
 
 	var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
-					p.attr("style", "font-weight: bold; width: 329px; float: left; display: block; margin: 0 auto 0 auto; margin-left:-5px;");
+					p.attr("style", "font-weight: 600; width: 350px; float: left; display: block; margin-left:-6px; margin-top:-1px;");
 					p.attr("class", "panel-heading");
 	var q = $("<p>").text(recipeIngreds);
-	var r = $("<p>").text(" SOURCE: " + instructSource);
-					r.attr("style", "float: left; display: block; margin: 0 auto 0 auto;");
+	var r = $("<p>").text(" SOURCE: "  + instructSource );
+					r.attr("style",   "text-align:center;");
 
-	var s = $("<button>").text("Instructions");
+	var s = $("<button>").text("Instructions").addClass("instructions");
 					s.attr("onclick", "location.href="+"'"+instructionsLink+"';")
 					s.attr("type", "button");
-					s.attr("style", "display: block; margin: 0 auto 0 auto; color: black;");
+					s.attr("style", "display: block; margin: 0 auto 0 auto; color:white; padding:10px; border-color:black; background-color:black");
 					
 					recipeDiv.attr("id", "marginFix"+maxCount);
 					recipeDiv.append(p);

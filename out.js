@@ -126,9 +126,12 @@ $("#submit").on("click", function(){
 			console.log("Restaurant " + (i+1));
 			console.log(restaurantName);
 
+
+				
+
 			//create button
-			var b = $("<button>").text("Recommend This");
-			b.attr("style", "display: block; margin: 0 0 0 0; color: black;");
+			var b = $("<button>").text("Recommend");
+			b.attr("style", "display: block; margin-top:20px; margin-left:120px; margin-bottom:20px; color: white; padding:10px; border-color:black; background-color:black");
 			b.attr("type", "button");
 			b.val(restaurantID);
 			b.addClass("voteButton");
@@ -146,6 +149,7 @@ $("#submit").on("click", function(){
 			var retrieving = $("<p>").html("Recommended By: " + restaurantVotes);
 			retrieving.attr("id", [i]);
 			retrieving.addClass("voteShow2");
+			$(".voteShow2").css({"margin-left":"70px","margin-bottom":"10px"});
 
 			//populate HTML
 			restaurantImg.attr("src", restaurantImageURL);
