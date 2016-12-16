@@ -120,7 +120,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 
 	var recipeDiv = $("<div>");
 					recipeDiv.attr("class", "panel panel-primary");
-					recipeDiv.attr("style", "width: 350px; float: left; margin-right:30px; padding-left:5px; padding-right:5px; padding-bottom:10px; border-color:transparent; text-align:center;");
+					recipeDiv.attr("style", "width: 330px; float: left; margin-right:30px; padding-left:5px; padding-right:5px; padding-bottom:10px; border-color:transparent; text-align:center;");
 
 	var recipeImg = $("<img>");
 					recipeImg.attr("src", recipeImageURL);
@@ -164,7 +164,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 //
 
 	var p = $("<p>").text("DISH #" + maxCount + ": " + recipeTitle);
-					p.attr("style", "font-weight: 600; width: 350px; float: left; display: block; margin-left:-6px; margin-top:-1px;");
+					p.attr("style", "font-weight: 600; width: 330px; float: left; display: block; margin-left:-6px; margin-top:-1px;");
 					p.attr("class", "panel-heading");
 	var q = $("<p>").text(recipeIngreds);
 	var r = $("<p>").text(" SOURCE: "  + instructSource );
