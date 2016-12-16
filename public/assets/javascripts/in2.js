@@ -129,6 +129,9 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					recipeImg.attr("src", recipeImageURL);
 					recipeImg.attr("style", " position:relative; margin:15px auto;");
 					recipeImg.attr("class", "pics");
+	var attrImg = $("<img>");
+					attrImg.attr("src", "assets/images/edamam.png");
+					attrImg.attr("style", "position: relative; margin: 0 auto;"); //"float: right; margin-right:10px;");
 
 	//create the button and set the value to the recipe name, add class, add css style
 	var b = $("<button>").text("Recommend");
@@ -201,6 +204,8 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					recipeDiv.append(b);
 					recipeDiv.append("<BR>");
 					recipeDiv.append(retrieving);
+					recipeDiv.append("<BR>");
+					recipeDiv.append(attrImg);
 					resultsCount++;
 					$(".results").append(recipeDiv);
 					$(".results").append("<BR>");				
