@@ -180,7 +180,7 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					recipeDiv.append("<BR>");
 					recipeDiv.append(recipeImg);
 					recipeDiv.append("<BR>");
-					recipeDiv.append(" CALORIES: " + calories);
+					recipeDiv.append(" CALORIES PER SERVING: " + calories);
 					recipeDiv.append("<BR>");
 					recipeDiv.append("<BR>");
 					recipeDiv.append(" INGREDIENTS: " + rICount);
@@ -236,8 +236,10 @@ function ajaxCall(queryURL){
 					var instructSource = results[i].recipe.source;
 					var ingredsLink = results[i].recipe.shareAs;
 					var instructionsLink = results[i].recipe.url;
-					var calories = parseInt(results[i].recipe.calories);
+					var servings = parseInt(results[i].recipe.yield);
+					var calories = parseInt((results[i].recipe.calories)/servings);
 					var recipeVotes = 0;
+
 					//var voteCount;
 					//var voteRetrieve;
 					var resultName = results[i].recipe.label;

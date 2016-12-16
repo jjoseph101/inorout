@@ -94,7 +94,7 @@ function DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, addr
 			var restaurantDiv = $("<div>");
 			var restaurantImg = $("<img>");
 					restaurantImg.attr("src", restaurantImageURL);
-					restaurantImg.attr("style", "width:170px; height:170px; float:left; margin:10px 20px 10px 10px; position:relative;");
+					restaurantImg.attr("style", "width:200px; height:200px; float:left; margin:10px 20px 10px 10px; position:relative;");
 					restaurantImg.attr("class", "pics");
 			var ratingImg = $("<img>");
 					ratingImg.attr("src", ratingImageURL);
@@ -147,7 +147,6 @@ function DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, addr
 			$(restaurantDiv).append(p);
 			$(restaurantDiv).append("</br>");
 			$(restaurantDiv).append(restaurantImg);
-			$(restaurantDiv).append("</br>");
 			$(restaurantDiv).append(ratingImg);
 			$(restaurantDiv).append("</br>");
 			$(restaurantDiv).append("</br>");
