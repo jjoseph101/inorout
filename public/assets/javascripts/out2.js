@@ -162,6 +162,14 @@ function DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, addr
 
 
 }
+//to auto scroll to the reults
+function showDiv(){
+	 $('html, body').animate({
+        	scrollTop: $("#forScroll").offset().top
+      }, 2000);
+
+}
+
 
 function ajaxCall(queryURL){
 
@@ -195,6 +203,8 @@ function ajaxCall(queryURL){
 			DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, address, restaurantName, yelpURL, restaurantID, restaurantVotes, i, city, state, zipcode);
 	
 		}
+		//auto scroll to the result
+		showDiv();
 	});//.done call
 	// .fail(function(){
 

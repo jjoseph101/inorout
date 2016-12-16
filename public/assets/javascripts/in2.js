@@ -208,6 +208,15 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 
 }
 
+//to auto scroll to the results
+function showDiv(){
+	 $('html, body').animate({
+        	scrollTop: $("#forScroll").offset().top
+      }, 2000);
+
+}
+
+
 function ajaxCall(queryURL){
 
 	//getURL();
@@ -259,6 +268,9 @@ function ajaxCall(queryURL){
 
 	$("#searchCrit").prepend("RESULTS RETURNED: " + resultsCount + "<BR>" + "<BR>");
 
+	//auto scroll to result
+	showDiv();
+
 	});//.done call
 	// .fail(function(){
 
@@ -267,11 +279,19 @@ function ajaxCall(queryURL){
 	// })//.fail
 }
 
+// function showDiv(){
+// 	 $('html, body').animate({
+//         	scrollTop: $("#forScroll").offset().top
+//       }, 2000);
+
+// }
+
 
 
 $(document).on("click","#submit", function (event){
 
 	event.preventDefault();
+	//showDiv();
 		
 		$(".results").empty();
 

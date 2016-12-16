@@ -201,9 +201,6 @@ function DOMchange(recipeImageURL, recipeName, recipeVotes, maxCount, recipeTitl
 					$(".results").append(recipeDiv);
 					$(".results").append("<BR>");				
 
-
-
-
 }
 
 function ajaxCall(queryURL){
@@ -265,11 +262,18 @@ function ajaxCall(queryURL){
 	})//.fail
 }
 
+function showDiv(){
+	 $('html, body').animate({
+        	scrollTop: $("#BBB").offset().top
+      }, 2000);
 
+}
 
 $(document).on("click","#submit", function (event){
 
 	event.preventDefault();
+
+	showDiv();
 		
 		$(".results").empty();
 
