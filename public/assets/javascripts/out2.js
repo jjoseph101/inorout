@@ -79,7 +79,7 @@ function getURL(){
 		}
 
 		// set up API url
-		var queryURL = "http://localhost:5001/yelp/search?term="+termZ +"&location="+ nearCityZ +nearStateZ+"&from=0&to=20";
+		var queryURL = "http://localhost:5000/yelp/search?term="+termZ +"&location="+ nearCityZ +nearStateZ+"&from=0&to=20";
 		console.log("queryURL: " + queryURL); 
 
 
@@ -196,11 +196,11 @@ function ajaxCall(queryURL){
 	
 		}
 	});//.done call
-	.fail(function(){
+	// .fail(function(){
 
-		$(".results").html("<h1>We are experiencing some technical issue right now. Please try again later.</h1>");
+	// 	$(".results").html("<h1>We are experiencing some technical issue right now. Please try again later.</h1>");
 
-	})//.fail
+	// })//.fail
 }
 
 
