@@ -256,7 +256,7 @@ $(document).on("click",".voteButton", function(event){
 		//prevent refresh
 		event.preventDefault();
 				//set a local vairable to store the recipe name which is the value form the button
-				var resultName = $(this).val().trim();
+				var resultID = $(this).val().trim();
 				//set the local variable to store the data attr of the button whic is the [i]
 				var pID = $(this).attr("data");
 				//set local variable for voteCount		  	

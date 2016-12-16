@@ -1,5 +1,5 @@
 @font-face {
-		font-family:"gill sans";
+		font-family:"gill sans", Verdana;
 		src: url("gillsans.eot") format('embedded-opentype'),
 		url("gillsans.otf") format('opentype');
 }
@@ -9,8 +9,6 @@
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
 }
-
-
 
 
 
