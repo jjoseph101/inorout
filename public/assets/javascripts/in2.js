@@ -28,7 +28,7 @@ $(document).ready(function(){
 	// set global variables
 	var appKey="7b5ada340cf0a8e379450f9e20d0a560"
 	var appID="a81083ad"
-	var URL="http://cors-anywhere.herokuapp.com/https://api.edamam.com/search?"
+	var URL="https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?"
 	var meats = "";
 	var cuisines = "";
 	var diets = "";
