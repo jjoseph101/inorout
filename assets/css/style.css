@@ -231,6 +231,11 @@ p {
     outline:none;
 }
 
+.btn-primary:focus,
+.btn-primary:active:focus {
+	outline:none;
+}
+
 <<<<<<< HEAD
 #submit:focus, 
 #submit:active:focus {
@@ -257,7 +262,7 @@ p {
 
 .restaurantHeading:hover{
 	cursor: pointer;
-	color: blue;
+	color: black;
 }
 
 #searchCrit {

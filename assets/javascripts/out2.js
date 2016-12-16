@@ -115,9 +115,12 @@ function DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, addr
 			console.log("Restaurant " + (i+1));
 			console.log(restaurantName);
 
+
+				
+
 			//create button
-			var b = $("<button>").text("Recommend This");
-					b.attr("style", "display: block; margin: 20px 0 5px 0; color: black;");
+			var b = $("<button>").text("Recommend");
+					b.attr("style", "display: block;margin-right:50px; margin-top:10px; margin-bottom:10px; color:white; padding:10px; border-color:black; background-color:black");
 					b.attr("type", "button");
 					b.val(restaurantID);
 					b.addClass("voteButton");
@@ -137,6 +140,7 @@ function DOMchange(restaurantImageURL, ratingImageURL, neighborhood, phone, addr
 			var retrieving = $("<p>").html("Recommended By: " + restaurantVotes);
 					retrieving.attr("id", [i]);
 					retrieving.addClass("voteShow2");
+					
 
 			//populate HTML
 			$(restaurantDiv).append("</br>");
