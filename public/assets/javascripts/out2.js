@@ -79,7 +79,7 @@ function getURL(){
 		}
 
 		// set up API url
-		var queryURL = "http://localhost:5000/yelp/search?term="+termZ +"&location="+ nearCityZ +nearStateZ+"&from=0&to=20";
+		var queryURL = "https://localhost:5000/yelp/search?term="+termZ +"&location="+ nearCityZ +nearStateZ+"&from=0&to=20";
 		console.log("queryURL: " + queryURL); 
 
 
