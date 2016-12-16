@@ -119,6 +119,10 @@ p {
 	color:white;
 }
 
+.panel-heading restaurantHeading {
+	width:100%;
+}
+
 .panel-heading {
 	background-color:#edb61e;
 	color:white;
