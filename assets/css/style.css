@@ -25,6 +25,7 @@
 	font-family:"gill sans";
 	background-color:black;
 	background-attachment:fixed;
+	
 
 }
 
@@ -119,6 +120,10 @@ p {
 	color:white;
 }
 
+.panel-heading restaurantHeading {
+	width:100%;
+}
+
 .panel-heading {
 	background-color:#edb61e;
 	color:white;
@@ -193,17 +198,19 @@ p {
 
 
 
+
+
 #marginFix1 {
 	margin-top:0px;
 
 }
 
 #marginFix2 {
-	margin-top:-19px;
+	margin-top:-16px;
 }
 
 #marginFix3 {
-	margin-top:-38px;
+	margin-top:-32px;
 } 
 
 

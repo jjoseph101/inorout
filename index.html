@@ -201,7 +201,10 @@
 <div class="aboutSection">
 	<img src="images/welcome.svg" class="welcome">
 	
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed autem ut qui enim provident optio ducimus et quae, quia molestias mollitia eius corporis nobis explicabo quas, dicta hic voluptas iusto!</p>
+<p>Choosing where or what to eat can be difficult. In-or-Out can help.
+Click “in” if you’re in the mood to cook. 
+Click “out” if you’re in the mood to go to.
+Search by cuisine, location, and nutritional needs. Recommend your favorites and see what the In-or-Out community thinks of them, too. A fun, interactive way to pick your next meal!</p>
 </div>
 </div>
 
@@ -211,6 +214,7 @@ $(".aboutSection").hide();
 
 $(".aboutButtonTwo").on("click", function(){
 	$(".aboutSection").toggle();
+	$('body').css("overflow", "hidden");
 });
 });
 

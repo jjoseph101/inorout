@@ -270,7 +270,7 @@ function ajaxCall(queryURL){
 $(document).on("click","#submit", function (event){
 
 	event.preventDefault();
-
+		
 		$(".results").empty();
 
 	// grab data
@@ -287,7 +287,7 @@ $(document).on("click","#submit", function (event){
 		getURL();
 
 		//$("#searchCrit").prepend("RESULTS RETURNED: " + results.length + "<BR>" + "<BR>");
-
+		
 
 	
 	return false;
