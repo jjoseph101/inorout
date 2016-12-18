@@ -57,8 +57,7 @@ function getURL(){
 
 	// check to make sure user inputs minimal search criteria
 		if (meats=="" && cuisines=="") {
-			$(".results").html("You must input either a meat selection or a cuisine selection" + "<BR>" + "Please try again");
-			$(".results").css({"background-color":"white","padding":"20px","width":"553px","color":"black","margin-left":"-15px"});
+			$("#searchCrit").prepend("YOU MUST INPUT EITHER A MEAT OR CUISINE SELECTION" + "<BR>" + "<BR>" + "PLEASE TRY AGAIN!" + "<BR>" + "<BR>");
 			return false;
 		};
 
@@ -240,8 +239,7 @@ function ajaxCall(queryURL){
 
 		if (results.length == 0) {
 			console.log("Invalid Search");
-			$(".results").html("You entered an invalid search term!" + "<BR>" + "Please try again");
-			$(".results").css({"background-color":"white","padding":"20px","width":"553px","color":"black","margin-left":"-15px"});
+			$("#searchCrit").prepend("INVALID SEARCH PARAMETERS!" + "<BR>" + "<BR>" + "PLEASE TRY AGAIN!" + "<BR>" + "<BR>");
 			return false;
 		}
 
