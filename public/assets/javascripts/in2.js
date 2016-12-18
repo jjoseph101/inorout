@@ -238,6 +238,13 @@ function ajaxCall(queryURL){
 			console.log(results);
 			console.log(results.length);
 
+		if (results.length == 0) {
+			console.log("Invalid Search");
+			$(".results").html("You entered an invalid search term!" + "<BR>" + "Please try again");
+			$(".results").css({"background-color":"white","padding":"20px","width":"553px","color":"black","margin-left":"-15px"});
+			return false;
+		}
+
 	// display results loop
 	for (var i=0; i<results.length; i++) {
 
